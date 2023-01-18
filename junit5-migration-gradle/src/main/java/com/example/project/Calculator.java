@@ -12,8 +12,10 @@ package com.example.project;
 
 public class Calculator {
 
+	private int mul = 5;
+
 	public int add(int a, int b) {
-		return a + b;
+		return a + b * this.mul;
 	}
 
 }
