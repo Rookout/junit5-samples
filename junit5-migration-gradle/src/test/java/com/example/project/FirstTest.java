@@ -19,8 +19,10 @@ public class FirstTest {
 	@Test
 	public void myFirstTest() {
 		Calculator calculator = new Calculator();
-		int actual = calculator.add(1, 1);
-		assertEquals(1, 1);
+		int a = 1;
+		int b = 2;
+		int actual = calculator.add(a, b);
+		assertEquals(a, 1);
 		assertEquals("1 + 1 should equal 2", 2, actual);
 		assertEquals("This test should fail", "it does");
 	}

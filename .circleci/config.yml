@@ -23,7 +23,7 @@ jobs:
           name: Test
           command: |
             cd junit5-migration-gradle
-            export JAVA_TOOL_OPTIONS=-javaagent:"/home/circleci/project/junit5-migration-gradle/rook-all.jar" ROOKOUT_CONTROLLER_HOST=wss://staging.control.rookout.com ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:circleci ROOKOUT_TOKEN=9c44458cfad019d8a92563a968e97fae7ac220cac88ea46cdd6830895c8799a7
+            export JAVA_TOOL_OPTIONS=-javaagent:"/home/circleci/project/junit5-migration-gradle/rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:circleci
             gradle test -i
 
 # Invoke jobs via workflows
