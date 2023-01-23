@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 
 @Tag("fast")
-class FirstTest {
+class FirstTestMaven {
 
 	@Test
 	@DisplayName("My 1st JUnit 5 test! 😎")
