@@ -15,7 +15,12 @@ import org.junit.jupiter.api.Test;
 class OtherTests {
 
 	@Test
-	void testThisThing() {
+	void testThisThing() throws InterruptedException {
+		slowFunc();
+	}
+
+	void slowFunc() throws InterruptedException {
+		Thread.sleep(1000);
 	}
 
 	@Test
