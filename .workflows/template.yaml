@@ -14,6 +14,8 @@
         value: "{{inputs.parameters.repo_name}}"
       - name: BRANCH
         value: "{{inputs.parameters.branch}}"
+      - name: ROOKOUT_TOKEN
+        value: 9c44458cfad019d8a92563a968e97fae7ac220cac88ea46cdd6830895c8799a7
     workingDir: /{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle
     command: [ sh ]
     source: |
