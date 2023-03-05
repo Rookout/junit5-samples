@@ -7,6 +7,11 @@
     parameters:
       - name: repo_name
       - name: branch
+    artifacts:
+      - name: git
+        path: /{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}
+        gcs:
+          key: "{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/git"
   script:
     image: cimg/openjdk:8.0
     env:
@@ -21,5 +26,5 @@
     source: |
       ls -lah
       pwd
-      export JAVA_TOOL_OPTIONS=-javaagent:"/{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle/rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:argo
+      export JAVA_TOOL_OPTIONS=-javaagent:"rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:argo
       gradle test -i
