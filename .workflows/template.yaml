@@ -19,7 +19,7 @@
     workingDir: /{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle
     command: [ sh ]
     source: |
-      ls- lah
+      ls -lah
       pwd
-      export JAVA_TOOL_OPTIONS=-javaagent:"rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:argo
+      export JAVA_TOOL_OPTIONS=-javaagent:"/{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle/rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:argo
       gradle test -i
