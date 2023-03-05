@@ -1,0 +1,21 @@
+- name: unit-tests
+  metadata:
+  retryStrategy:
+    limit: 1
+    retryPolicy: OnError
+  inputs:
+    parameters:
+      - name: repo_name
+      - name: branch
+  script:
+    image: cimg/openjdk:8.0
+    env:
+      - name: REPO
+        value: "{{inputs.parameters.repo_name}}"
+      - name: BRANCH
+        value: "{{inputs.parameters.branch}}"
+    workingDir: /{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle
+    command: [ sh ]
+    source: |
+      export JAVA_TOOL_OPTIONS=-javaagent:"rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:argo
+      gradle test -i
