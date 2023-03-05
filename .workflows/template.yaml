@@ -21,10 +21,12 @@
         value: "{{inputs.parameters.branch}}"
       - name: ROOKOUT_TOKEN
         value: 9c44458cfad019d8a92563a968e97fae7ac220cac88ea46cdd6830895c8799a7
+      - name: ARGO_DEBUG_PAUSE_AFTER
+        value: true
     workingDir: /{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle
     command: [ sh ]
     source: |
       ls -lah
       pwd
-      export JAVA_TOOL_OPTIONS=-javaagent:"rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:argo
+      export JAVA_TOOL_OPTIONS=-javaagent:"/{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle/rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:argo
       gradle test -i
