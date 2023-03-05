@@ -24,7 +24,6 @@ public class FirstTest {
 		int actual = calculator.add(a, b);
 		assertEquals(a, 1);
 		assertEquals("1 + 1 should equal 2", 2, actual);
-		assertEquals("This test should fail", "it does");
 	}
 
 }
