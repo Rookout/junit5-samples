@@ -5,14 +5,13 @@ import org.json.*;
 import java.util.Calendar;
 import java.util.Date;
 
-
 public class Book {
 
     public Book (String rawJson) {
-        this.rawJson = rawJson;
-        this.json = new JSONObject(rawJson);
-
         try {
+            this.rawJson = rawJson;
+            System.out.println("Raw JSON from openLib: " + rawJson);
+            this.json = new JSONObject(rawJson);
             this.title = json.getString("title");
             this.createdString = json.getString("created");
             this.created = new Date(createdString);
@@ -21,8 +20,16 @@ public class Book {
             this.yearCreated = calendar.get(Calendar.YEAR);
 
         } catch (Throwable t) {
-            // we're keeping the data we have and skipping the rest
+            // Some items in the library our corrupted, keep what we have
         }
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public int getYearCreated() {
+        return this.yearCreated;
     }
 
     String rawJson = "";
