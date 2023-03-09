@@ -2,6 +2,7 @@ package com.example.librarybrowser;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -14,10 +15,10 @@ public class LibraryBrowser {
 
     }
 
-    public Book getBookByIsbn(String isbn) throws IOException, InterruptedException {
+    public Book getBookByIsbn(String isbn) throws Exception {
         String url = host + booksPrefix + isbn + jsonSuffix;
         var client = HttpClient.newHttpClient();
-        var request = HttpRequest.newBuilder(URI.create(url))
+        var request = HttpRequest.newBuilder(new URI(url))
                 .header("accept", "application/json")
                 .build();
         var response = client.send(request, HttpResponse.BodyHandlers.ofString());
