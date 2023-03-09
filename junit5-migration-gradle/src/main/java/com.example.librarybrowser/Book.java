@@ -12,8 +12,8 @@ public class Book {
             this.rawJson = rawJson;
             System.out.println("Raw JSON from openLib: " + rawJson);
             this.json = new JSONObject(rawJson);
-            this.title = json.getString("title");
-            this.createdString = json.getString("created");
+            this.title = json.get("title").toString();
+            this.createdString = json.get("created").toString();
             this.created = new Date(createdString);
             this.calendar = Calendar.getInstance();
             calendar.setTime(created);
