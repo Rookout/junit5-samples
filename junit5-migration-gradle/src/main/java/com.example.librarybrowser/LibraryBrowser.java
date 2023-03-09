@@ -19,15 +19,23 @@ public class LibraryBrowser {
         String url = host + booksPrefix + isbn + jsonSuffix;
         var client = HttpClient.newHttpClient();
         var uri = URI.create(url);
+        System.out.println("Uri: " + uri);
         var differentUri = new URI(url);
+        System.out.println("Different uri " + differentUri);
         var request = HttpRequest.newBuilder(uri)
                 .header("accept", "application/json")
                 .build();
+        System.out.println("req: " + request);
         var differentRequest = HttpRequest.newBuilder(uri)
                 .header("accept", "application/json")
                 .build();
+        System.out.println("different req: " + differentRequest);
 
         var response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println("response: " + response);
+
+        var diffresponse = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println("diffresponse: " + diffresponse);
         Book book = new Book(response.body());
         return book;
     }

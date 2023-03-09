@@ -21,7 +21,7 @@ public class LibraryBrowserTest {
         var lib = new LibraryBrowser();
         var book = lib.getBookByIsbn(deathlyHallowsIsbn);
 
-        assertEquals("Harry Potter and the Deathly Hallows", book.getTitle());
+        assertEquals(book.getTitle(), "Harry Potter and the Deathly Hallows");
         assertEquals(2007, book.getYearCreated());
     }
 
