@@ -18,9 +18,15 @@ public class LibraryBrowser {
     public Book getBookByIsbn(String isbn) throws Exception {
         String url = host + booksPrefix + isbn + jsonSuffix;
         var client = HttpClient.newHttpClient();
-        var request = HttpRequest.newBuilder(new URI(url))
+        var uri = URI.create(url);
+        var differentUri = new URI(url);
+        var request = HttpRequest.newBuilder(uri)
                 .header("accept", "application/json")
                 .build();
+        var differentRequest = HttpRequest.newBuilder(uri)
+                .header("accept", "application/json")
+                .build();
+
         var response = client.send(request, HttpResponse.BodyHandlers.ofString());
         Book book = new Book(response.body());
         return book;
