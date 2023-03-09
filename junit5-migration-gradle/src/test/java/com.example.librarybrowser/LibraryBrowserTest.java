@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 public class LibraryBrowserTest {
 
     @Test
-    public void getBookTest() throws IOException, InterruptedException {
+    public void getBookTest() throws Exception {
 
         String deathlyHallowsIsbn = "OL82586W";
         var lib = new LibraryBrowser();
