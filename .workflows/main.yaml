@@ -1,0 +1,21 @@
+- name: git-fetch
+  templateRef:
+    name: git-toolkit
+    template: git-fetch
+    clusterScope: true
+  arguments:
+    parameters:
+      - name: branch
+        value: "{{ workflow.parameters.branch }}"
+      - name: repo_name
+        value: "{{ workflow.parameters.repo_name }}"
+- name: unit-tests-run
+  template: unit-tests
+  arguments:
+    parameters:
+      - name: branch
+        value: "{{ workflow.parameters.branch }}"
+      - name: repo_name
+        value: "{{ workflow.parameters.repo_name }}"
+  dependencies:
+    - git-fetch
