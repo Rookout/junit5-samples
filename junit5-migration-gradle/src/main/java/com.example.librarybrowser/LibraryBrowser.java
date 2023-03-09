@@ -16,21 +16,23 @@ public class LibraryBrowser {
     }
 
     public Book getBookByIsbn(String isbn) throws Exception {
+        // Build book URL
         String url = host + booksPrefix + isbn + jsonSuffix;
-        var client = HttpClient.newHttpClient();
+
+        // Make an HTTP request
         var request = HttpRequest.newBuilder(URI.create(url))
                 .header("accept", "application/json")
                 .build();
-        System.out.println("Request: " + request);
         var response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println("Response: " + response);
-        Book book = new Book(response.body());
-        System.out.println("Book: " + book);
-        return book;
+
+        // Return Book from response body
+        return new Book(response.body());
     }
 
-    String extraHeaders = "";
-    String host = "https://openlibrary.org/";
-    String booksPrefix = "works/";
-    String jsonSuffix = ".json";
+    HttpClient client = HttpClient.newHttpClient();
+
+    final String extraHeaders = "";
+    final String host = "https://openlibrary.org/";
+    final String booksPrefix = "works/";
+    final String jsonSuffix = ".json";
 }

@@ -9,15 +9,17 @@ public class Book {
 
     public Book (String rawJson) {
         try {
+            // Parse JSON
             this.rawJson = rawJson;
-            System.out.println("Raw JSON from openLib: " + rawJson);
             this.json = new JSONObject(rawJson);
+
+            // Parse title
             this.title = json.get("title").toString();
+
+            // Prase date
             this.createdString = json.get("created").toString();
             this.created = new Date(createdString);
-            this.calendar = Calendar.getInstance();
-            calendar.setTime(created);
-            this.yearCreated = calendar.get(Calendar.YEAR);
+            this.yearCreated = created.getYear();
 
         } catch (Throwable t) {
             // Some items in the library our corrupted, keep what we have
@@ -37,6 +39,5 @@ public class Book {
     String title = "no title";
     String createdString = "no created string";
     Date created = new Date();
-    Calendar calendar = Calendar.getInstance();
-    int yearCreated = calendar.get(Calendar.YEAR);
+    int yearCreated = created.getYear();
 }

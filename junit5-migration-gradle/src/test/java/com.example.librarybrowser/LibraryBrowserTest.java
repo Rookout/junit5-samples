@@ -17,10 +17,12 @@ public class LibraryBrowserTest {
     @Test
     public void getBookTest() throws Exception {
 
+        // Get Deathly Hallows book
         String deathlyHallowsIsbn = "OL82586W";
         var lib = new LibraryBrowser();
         var book = lib.getBookByIsbn(deathlyHallowsIsbn);
 
+        // Test book attributes
         assertEquals("Title", "Harry Potter and the Deathly Hallows", book.getTitle());
         assertEquals("Year created", book.getYearCreated(), 2009);
     }
