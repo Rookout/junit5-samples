@@ -1,5 +1,6 @@
 # JUnit 5 Samples [![ci-badge]][ci-actions]
 
+
 Welcome to _JUnit 5 Samples_, a collection of sample applications and extensions
 using JUnit Jupiter, JUnit Vintage, and the JUnit Platform on various build systems.
 
