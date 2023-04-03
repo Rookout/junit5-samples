@@ -13,7 +13,7 @@
         gcs:
           key: "{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/git"
   script:
-    image: gradle:8-jdk8
+    image: gradle:8.0-jdk11
     env:
       - name: REPO
         value: "{{inputs.parameters.repo_name}}"
