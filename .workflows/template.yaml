@@ -20,7 +20,10 @@
       - name: BRANCH
         value: "{{inputs.parameters.branch}}"
       - name: ROOKOUT_TOKEN
-        value: d956a3aa07906fcb9b21ac6386f158f76310504b52637b5ef1703e94fbb2da2d
+        valueFrom:
+          secretKeyRef:
+            name: demo-ci-rookout-token
+            key: demo-ci-rookout-token
     workingDir: /{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle
     command: [ sh ]
     source: |
