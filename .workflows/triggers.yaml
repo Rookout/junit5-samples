@@ -1,0 +1,5 @@
+- events:
+     - pull_request.synchronize
+   branches: ["*"]
+   onStart: ["main.yaml"]
+   templates: ["templates.yaml"]
