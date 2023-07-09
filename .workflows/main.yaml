@@ -7,15 +7,15 @@
     parameters:
       - name: branch
         value: "{{ workflow.parameters.branch }}"
-      - name: repo_name
-        value: "{{ workflow.parameters.repo_name }}"
+      - name: repo
+        value: "{{ workflow.parameters.repo }}"
 - name: unit-tests-run
   template: unit-tests
   arguments:
     parameters:
       - name: branch
         value: "{{ workflow.parameters.branch }}"
-      - name: repo_name
-        value: "{{ workflow.parameters.repo_name }}"
+      - name: repo
+        value: "{{ workflow.parameters.repo }}"
   dependencies:
     - git-fetch

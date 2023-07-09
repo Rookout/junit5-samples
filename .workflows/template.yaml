@@ -5,18 +5,18 @@
     retryPolicy: OnError
   inputs:
     parameters:
-      - name: repo_name
+      - name: repo
       - name: branch
     artifacts:
       - name: git
-        path: /{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}
+        path: /{{inputs.parameters.repo}}/{{inputs.parameters.branch}}
         gcs:
-          key: "{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/git"
+          key: "{{inputs.parameters.repo}}/{{inputs.parameters.branch}}/git"
   script:
     image: gradle:8.0.2-jdk11
     env:
       - name: REPO
-        value: "{{inputs.parameters.repo_name}}"
+        value: "{{inputs.parameters.repo}}"
       - name: BRANCH
         value: "{{inputs.parameters.branch}}"
       - name: ROOKOUT_TOKEN
@@ -24,8 +24,8 @@
           secretKeyRef:
             name: demo-ci-rookout-token
             key: demo-ci-rookout-token
-    workingDir: /{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle
+    workingDir: /{{inputs.parameters.repo}}/{{inputs.parameters.branch}}/junit5-migration-gradle
     command: [ sh ]
     source: |
-      export JAVA_TOOL_OPTIONS=-javaagent:"/{{inputs.parameters.repo_name}}/{{inputs.parameters.branch}}/junit5-migration-gradle/rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:argo
+      export JAVA_TOOL_OPTIONS=-javaagent:"/{{inputs.parameters.repo}}/{{inputs.parameters.branch}}/junit5-migration-gradle/rook-all.jar" ROOKOUT_CONTROLLER_PORT=443 ROOKOUT_LABELS=env:argo
       gradle test -i
